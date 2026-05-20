@@ -102,7 +102,7 @@
         }
 
         .other-text-input {
-            width: 80%;
+            width: 85%;
             padding: 10px;
             border: 1px solid #e6e4e0;
             border-radius: 6px;
@@ -164,10 +164,15 @@
         <div id="step1" class="question-block">
             <label>1. What is your skin type lately?</label>
             <div class="options-group">
-                <label class="option-label"><input type="radio" name="skin_type" value="Oily" required> Oily (Shiny all over)</label>
-                <label class="option-label"><input type="radio" name="skin_type" value="Dry"> Dry (Feels tight or flaky)</label>
-                <label class="option-label"><input type="radio" name="skin_type" value="Combination"> Combination (Oily T-zone, dry cheeks)</label>
-                <label class="option-label"><input type="radio" name="skin_type" value="Sensitive"> Sensitive (Gets red/irritated easily)</label>
+                <label class="option-label"><input type="radio" name="skin_type" value="Oily" required onclick="toggleInput('otherContainer1', false)"> Oily (Shiny all over)</label>
+                <label class="option-label"><input type="radio" name="skin_type" value="Dry" onclick="toggleInput('otherContainer1', false)"> Dry (Feels tight or flaky)</label>
+                <label class="option-label"><input type="radio" name="skin_type" value="Combination" onclick="toggleInput('otherContainer1', false)"> Combination (Oily T-zone, dry cheeks)</label>
+                <label class="option-label"><input type="radio" name="skin_type" value="Sensitive" onclick="toggleInput('otherContainer1', false)"> Sensitive (Gets red/irritated easily)</label>
+                <label class="option-label"><input type="radio" name="skin_type" value="Other" id="radioOther1" onclick="toggleInput('otherContainer1', true)"> Something else... (Tell me more)</label>
+                
+                <div class="other-input-container" id="otherContainer1">
+                    <input type="text" name="skin_type_other_details" id="textOther1" class="other-text-input" placeholder="Want to add anything about your skin type?">
+                </div>
             </div>
             <div class="btn-container">
                 <button type="button" class="btn-back" onclick="prevStep(0)">Back</button>
@@ -178,9 +183,14 @@
         <div id="step2" class="question-block">
             <label>2. What kind of pimples do you usually get?</label>
             <div class="options-group">
-                <label class="option-label"><input type="radio" name="pimple_type" value="Whiteheads" required> Whiteheads (With white pus inside)</label>
-                <label class="option-label"><input type="radio" name="pimple_type" value="Blind Pimples"> Blind Pimples (Hard, painful red bumps under the skin)</label>
-                <label class="option-label"><input type="radio" name="pimple_type" value="Occasional"> Just tiny occasional bumps</label>
+                <label class="option-label"><input type="radio" name="pimple_type" value="Whiteheads" required onclick="toggleInput('otherContainer2', false)"> Whiteheads (With white pus inside)</label>
+                <label class="option-label"><input type="radio" name="pimple_type" value="Blind Pimples" onclick="toggleInput('otherContainer2', false)"> Blind Pimples (Hard, painful red bumps under skin)</label>
+                <label class="option-label"><input type="radio" name="pimple_type" value="Occasional" onclick="toggleInput('otherContainer2', false)"> Just tiny occasional bumps</label>
+                <label class="option-label"><input type="radio" name="pimple_type" value="Other" id="radioOther2" onclick="toggleInput('otherContainer2', true)"> Something else... (Describe it)</label>
+                
+                <div class="other-input-container" id="otherContainer2">
+                    <input type="text" name="pimple_type_other_details" id="textOther2" class="other-text-input" placeholder="How do they feel or where do they appear?">
+                </div>
             </div>
             <div class="btn-container">
                 <button type="button" class="btn-back" onclick="prevStep(1)">Back</button>
@@ -191,14 +201,14 @@
         <div id="step3" class="question-block">
             <label>3. Any ingredient/flavor preference that suits you?</label>
             <div class="options-group">
-                <label class="option-label"><input type="radio" name="ingredient" value="Salicylic Acid / Tea Tree" required onclick="toggleOtherInput(false)"> Tea Tree / Salicylic Acid (For active acne)</label>
-                <label class="option-label"><input type="radio" name="ingredient" value="Neem / Aloe" onclick="toggleOtherInput(false)"> Neem / Aloe Vera (Natural & Calming)</label>
-                <label class="option-label"><input type="radio" name="ingredient" value="Hydrocolloid Only" onclick="toggleOtherInput(false)"> Plain Hydrocolloid (No chemicals, completely safe)</label>
-                <label class="option-label"><input type="radio" name="ingredient" value="No Idea" onclick="toggleOtherInput(false)"> No preference, you choose for me! ❤️</label>
-                <label class="option-label"><input type="radio" name="ingredient" value="Other" id="otherRadio" onclick="toggleOtherInput(true)"> Other choice...</label>
+                <label class="option-label"><input type="radio" name="ingredient" value="Salicylic Acid / Tea Tree" required onclick="toggleInput('otherContainer3', false)"> Tea Tree / Salicylic Acid (For active acne)</label>
+                <label class="option-label"><input type="radio" name="ingredient" value="Neem / Aloe" onclick="toggleInput('otherContainer3', false)"> Neem / Aloe Vera (Natural & Calming)</label>
+                <label class="option-label"><input type="radio" name="ingredient" value="Hydrocolloid Only" onclick="toggleInput('otherContainer3', false)"> Plain Hydrocolloid (No chemicals, 100% safe)</label>
+                <label class="option-label"><input type="radio" name="ingredient" value="No Idea" onclick="toggleInput('otherContainer3', false)"> No preference, you choose for me! ❤️</label>
+                <label class="option-label"><input type="radio" name="ingredient" value="Other" id="radioOther3" onclick="toggleInput('otherContainer3', true)"> Other choice... (Specify ingredient or notes)</label>
                 
-                <div class="other-input-container" id="otherInputContainer">
-                    <input type="text" name="other_ingredient" id="otherTextField" class="other-text-input" placeholder="Type your preference here...">
+                <div class="other-input-container" id="otherContainer3">
+                    <input type="text" name="ingredient_other_details" id="textOther3" class="other-text-input" placeholder="Type your preference or any skin concerns here...">
                 </div>
             </div>
             <div class="btn-container">
@@ -210,9 +220,14 @@
         <div id="step4" class="question-block">
             <label>4. When are you most likely to wear them?</label>
             <div class="options-group">
-                <label class="option-label"><input type="radio" name="usage" value="Day/College" required> Daytime / College (Needs to be 100% invisible)</label>
-                <label class="option-label"><input type="radio" name="usage" value="Nighttime"> Overnight while sleeping (Can be thick/cute shapes)</label>
-                <label class="option-label"><input type="radio" name="usage" value="Both"> Both day and night</label>
+                <label class="option-label"><input type="radio" name="usage" value="Day/College" required onclick="toggleInput('otherContainer4', false)"> Daytime / College (Needs to be invisible)</label>
+                <label class="option-label"><input type="radio" name="usage" value="Nighttime" onclick="toggleInput('otherContainer4', false)"> Overnight while sleeping (Can be thick/cute shapes)</label>
+                <label class="option-label"><input type="radio" name="usage" value="Both" onclick="toggleInput('otherContainer4', false)"> Both day and night</label>
+                <label class="option-label"><input type="radio" name="usage" value="Other" id="radioOther4" onclick="toggleInput('otherContainer4', true)"> Other... (Specify anytime details)</label>
+                
+                <div class="other-input-container" id="otherContainer4">
+                    <input type="text" name="usage_other_details" id="textOther4" class="other-text-input" placeholder="Any specific routine details you want to add?">
+                </div>
             </div>
             <div class="btn-container">
                 <button type="button" class="btn-back" onclick="prevStep(3)">Back</button>
@@ -224,9 +239,10 @@
 </div>
 
 <script>
-    function toggleOtherInput(show) {
-        const container = document.getElementById('otherInputContainer');
-        const textField = document.getElementById('otherTextField');
+    // Global function to toggle input boxes dynamically
+    function toggleInput(containerId, show) {
+        const container = document.getElementById(containerId);
+        const textField = container.querySelector('input[type="text"]');
         if (show) {
             container.style.display = 'block';
             textField.required = true;
@@ -249,20 +265,20 @@
                 return;
             }
 
-            if (step === 4 && document.getElementById('otherRadio').checked) {
-                const textField = document.getElementById('otherTextField');
+            // Validation check for 'Other' text field if selected
+            const prevStepNum = step - 1;
+            const otherRadio = document.getElementById(`radioOther${prevStepNum}`);
+            if (otherRadio && otherRadio.checked) {
+                const textField = document.getElementById(`textOther${prevStepNum}`);
                 if (textField.value.trim() === "") {
-                    alert("Please specify your ingredient choice! ✨");
+                    alert("Please fill in the text box before clicking Next! ✨");
                     return;
                 }
             }
         }
 
         document.querySelectorAll('.question-block').forEach(block => block.classList.remove('active'));
-        if (step === 1) document.getElementById('step1').classList.add('active');
-        else if (step === 2) document.getElementById('step2').classList.add('active');
-        else if (step === 3) document.getElementById('step3').classList.add('active');
-        else if (step === 4) document.getElementById('step4').classList.add('active');
+        document.getElementById(`step${step}`).classList.add('active');
     }
 
     function prevStep(step) {
