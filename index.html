@@ -116,8 +116,20 @@
             border-color: var(--accent-color);
         }
 
+        /* Cute Aesthetic Quote Styling */
+        .cute-quote {
+            font-style: italic;
+            font-size: 13px;
+            color: #9c9a96;
+            margin-top: 20px;
+            text-align: center;
+            letter-spacing: 0.5px;
+            display: block;
+            line-height: 1.4;
+        }
+
         .btn-container {
-            margin-top: 30px;
+            margin-top: 25px;
             display: flex;
             justify-content: space-between;
         }
@@ -174,6 +186,7 @@
                     <input type="text" name="skin_type_other_details" id="textOther1" class="other-text-input" placeholder="Want to add anything about your skin type?">
                 </div>
             </div>
+            <span class="cute-quote">"Whatever it is, you're still glowing to me every single day."</span>
             <div class="btn-container">
                 <button type="button" class="btn-back" onclick="prevStep(0)">Back</button>
                 <button type="button" onclick="nextStep(2)">Next</button>
@@ -192,6 +205,7 @@
                     <input type="text" name="pimple_type_other_details" id="textOther2" class="other-text-input" placeholder="How do they feel or where do they appear?">
                 </div>
             </div>
+            <span class="cute-quote">"They are just tiny temporary guests, don't let them stress you out."</span>
             <div class="btn-container">
                 <button type="button" class="btn-back" onclick="prevStep(1)">Back</button>
                 <button type="button" onclick="nextStep(3)">Next</button>
@@ -211,6 +225,7 @@
                     <input type="text" name="ingredient_other_details" id="textOther3" class="other-text-input" placeholder="Type your preference or any skin concerns here...">
                 </div>
             </div>
+            <span class="cute-quote">"Only the gentlest things for your skin. I'll make sure of it."</span>
             <div class="btn-container">
                 <button type="button" class="btn-back" onclick="prevStep(2)">Back</button>
                 <button type="button" onclick="nextStep(4)">Next</button>
@@ -229,8 +244,9 @@
                     <input type="text" name="usage_other_details" id="textOther4" class="other-text-input" placeholder="Any specific routine details you want to add?">
                 </div>
             </div>
+            <span class="cute-quote">"Almost done! Your personal care package is just one click away."</span>
             <div class="btn-container">
-                <button type="button" class="btn-back" onclick="prevStep(3)">Back</button>
+                <button type="button" class="btn-back" onclick="prevStep(3).">Back</button>
                 <button type="submit">Submit Details ✨</button>
             </div>
         </div>
@@ -239,7 +255,6 @@
 </div>
 
 <script>
-    // Global function to toggle input boxes dynamically
     function toggleInput(containerId, show) {
         const container = document.getElementById(containerId);
         const textField = container.querySelector('input[type="text"]');
@@ -265,7 +280,6 @@
                 return;
             }
 
-            // Validation check for 'Other' text field if selected
             const prevStepNum = step - 1;
             const otherRadio = document.getElementById(`radioOther${prevStepNum}`);
             if (otherRadio && otherRadio.checked) {
