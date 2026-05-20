@@ -144,12 +144,6 @@
             border: 1px solid #e6e4e0;
         }
 
-        /* Thank you screen */
-        .success-screen {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -159,7 +153,7 @@
 <body>
 
 <div class="container">
-    <form id="skinForm" action="https://formspree.io/f/https://formspree.io/f/mykvkvvg" method="POST">
+    <form id="skinForm" action="https://formspree.io/f/mykvkvvg" method="POST">
         
         <div id="intro" class="question-block active" style="text-align: center;">
             <h1>Help Me Pamper You ✨</h1>
@@ -227,15 +221,9 @@
         </div>
 
     </form>
-
-    <div id="success" class="success-screen">
-        <h1 style="color: var(--accent-color);">Thank You, Shona! ❤️</h1>
-        <p class="subtitle" style="margin-bottom: 0;">Your skin profile has been securely sent to your personal shopper. Sit back and relax!</p>
-    </div>
 </div>
 
 <script>
-    // Show/Hide the text box based on "Other" selection
     function toggleOtherInput(show) {
         const container = document.getElementById('otherInputContainer');
         const textField = document.getElementById('otherTextField');
@@ -246,12 +234,11 @@
         } else {
             container.style.display = 'none';
             textField.required = false;
-            textField.value = ''; // Reset if they changed their mind
+            textField.value = '';
         }
     }
 
     function nextStep(step) {
-        // Validation check before moving forward
         if (step > 1) {
             const currentStepDiv = document.getElementById(`step${step-1}`);
             const inputs = currentStepDiv.querySelectorAll('input[type="radio"]');
@@ -262,7 +249,6 @@
                 return;
             }
 
-            // Specific check for "Other" text field validation
             if (step === 4 && document.getElementById('otherRadio').checked) {
                 const textField = document.getElementById('otherTextField');
                 if (textField.value.trim() === "") {
@@ -284,26 +270,6 @@
         if (step === 0) document.getElementById('intro').classList.add('active');
         else document.getElementById(`step${step}`).classList.add('active');
     }
-
-    // Handle Form submission smoothly
-    const form = document.getElementById('skinForm');
-    form.addEventListener("submit", function(e) {
-        e.preventDefault();
-        const data = new FormData(form);
-        
-        fetch(form.action, {
-            method: form.method,
-            body: data,
-            headers: { 'Accept': 'application/json' }
-        }).then(response => {
-            if (response.ok) {
-                form.style.display = 'none';
-                document.getElementById('success').style.display = 'block';
-            } else {
-                alert("Oops! Something went wrong. Try again.");
-            }
-        });
-    });
 </script>
 
 </body>
