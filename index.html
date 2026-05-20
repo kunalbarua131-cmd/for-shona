@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Your Skin ✨</title>
+    <style>
+        :root {
+            --bg-color: #f7f5f0; /* Old money minimal cream beige */
+            --text-color: #2c2a29;
+            --accent-color: #8fa89b; /* Soft aesthetic sage green */
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        p.subtitle {
+            font-size: 14px;
+            color: #7c7a79;
+            margin-bottom: 30px;
+        }
+
+        .question-block {
+            display: none;
+            animation: fadeIn 0.5s ease;
+            text-align: left;
+        }
+
+        .question-block.active {
+            display: block;
+        }
+
+        label {
+            font-size: 16px;
+            display: block;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Custom Radio Styling */
+        .option-label {
+            background: #fafaf8;
+            border: 1px solid #e6e4e0;
+            padding: 14px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+        }
+
+        .option-label:hover {
+            border-color: var(--accent-color);
+            background: #f1f4f2;
+        }
+
+        input[type="radio"] {
+            margin-right: 12px;
+            accent-color: var(--accent-color);
+        }
+
+        /* Other Input Styling */
+        .other-input-container {
+            display: none;
+            margin-top: 8px;
+            padding-left: 32px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .other-text-input {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #e6e4e0;
+            border-radius: 6px;
+            font-size: 14px;
+            color: var(--text-color);
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .other-text-input:focus {
+            border-color: var(--accent-color);
+        }
+
+        .btn-container {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            background-color: var(--text-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .btn-back {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 1px solid #e6e4e0;
+        }
+
+        /* Thank you screen */
+        .success-screen {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <form id="skinForm" action="https://formspree.io/f/https://formspree.io/f/mykvkvvg" method="POST">
+        
+        <div id="intro" class="question-block active" style="text-align: center;">
+            <h1>Help Me Pamper You ✨</h1>
+            <p class="subtitle">Just a few quick questions so I can get the perfect patch for your skin.</p>
+            <button type="button" onclick="nextStep(1)">Let's Start</button>
+        </div>
+
+        <div id="step1" class="question-block">
+            <label>1. What is your skin type lately?</label>
+            <div class="options-group">
+                <label class="option-label"><input type="radio" name="skin_type" value="Oily" required> Oily (Shiny all over)</label>
+                <label class="option-label"><input type="radio" name="skin_type" value="Dry"> Dry (Feels tight or flaky)</label>
+                <label class="option-label"><input type="radio" name="skin_type" value="Combination"> Combination (Oily T-zone, dry cheeks)</label>
+                <label class="option-label"><input type="radio" name="skin_type" value="Sensitive"> Sensitive (Gets red/irritated easily)</label>
+            </div>
+            <div class="btn-container">
+                <button type="button" class="btn-back" onclick="prevStep(0)">Back</button>
+                <button type="button" onclick="nextStep(2)">Next</button>
+            </div>
+        </div>
+
+        <div id="step2" class="question-block">
+            <label>2. What kind of pimples do you usually get?</label>
+            <div class="options-group">
+                <label class="option-label"><input type="radio" name="pimple_type" value="Whiteheads" required> Whiteheads (With white pus inside)</label>
+                <label class="option-label"><input type="radio" name="pimple_type" value="Blind Pimples"> Blind Pimples (Hard, painful red bumps under the skin)</label>
+                <label class="option-label"><input type="radio" name="pimple_type" value="Occasional"> Just tiny occasional bumps</label>
+            </div>
+            <div class="btn-container">
+                <button type="button" class="btn-back" onclick="prevStep(1)">Back</button>
+                <button type="button" onclick="nextStep(3)">Next</button>
+            </div>
+        </div>
+
+        <div id="step3" class="question-block">
+            <label>3. Any ingredient/flavor preference that suits you?</label>
+            <div class="options-group">
+                <label class="option-label"><input type="radio" name="ingredient" value="Salicylic Acid / Tea Tree" required onclick="toggleOtherInput(false)"> Tea Tree / Salicylic Acid (For active acne)</label>
+                <label class="option-label"><input type="radio" name="ingredient" value="Neem / Aloe" onclick="toggleOtherInput(false)"> Neem / Aloe Vera (Natural & Calming)</label>
+                <label class="option-label"><input type="radio" name="ingredient" value="Hydrocolloid Only" onclick="toggleOtherInput(false)"> Plain Hydrocolloid (No chemicals, completely safe)</label>
+                <label class="option-label"><input type="radio" name="ingredient" value="No Idea" onclick="toggleOtherInput(false)"> No preference, you choose for me! ❤️</label>
+                <label class="option-label"><input type="radio" name="ingredient" value="Other" id="otherRadio" onclick="toggleOtherInput(true)"> Other choice...</label>
+                
+                <div class="other-input-container" id="otherInputContainer">
+                    <input type="text" name="other_ingredient" id="otherTextField" class="other-text-input" placeholder="Type your preference here...">
+                </div>
+            </div>
+            <div class="btn-container">
+                <button type="button" class="btn-back" onclick="prevStep(2)">Back</button>
+                <button type="button" onclick="nextStep(4)">Next</button>
+            </div>
+        </div>
+
+        <div id="step4" class="question-block">
+            <label>4. When are you most likely to wear them?</label>
+            <div class="options-group">
+                <label class="option-label"><input type="radio" name="usage" value="Day/College" required> Daytime / College (Needs to be 100% invisible)</label>
+                <label class="option-label"><input type="radio" name="usage" value="Nighttime"> Overnight while sleeping (Can be thick/cute shapes)</label>
+                <label class="option-label"><input type="radio" name="usage" value="Both"> Both day and night</label>
+            </div>
+            <div class="btn-container">
+                <button type="button" class="btn-back" onclick="prevStep(3)">Back</button>
+                <button type="submit">Submit Details ✨</button>
+            </div>
+        </div>
+
+    </form>
+
+    <div id="success" class="success-screen">
+        <h1 style="color: var(--accent-color);">Thank You, Shona! ❤️</h1>
+        <p class="subtitle" style="margin-bottom: 0;">Your skin profile has been securely sent to your personal shopper. Sit back and relax!</p>
+    </div>
+</div>
+
+<script>
+    // Show/Hide the text box based on "Other" selection
+    function toggleOtherInput(show) {
+        const container = document.getElementById('otherInputContainer');
+        const textField = document.getElementById('otherTextField');
+        if (show) {
+            container.style.display = 'block';
+            textField.required = true;
+            textField.focus();
+        } else {
+            container.style.display = 'none';
+            textField.required = false;
+            textField.value = ''; // Reset if they changed their mind
+        }
+    }
+
+    function nextStep(step) {
+        // Validation check before moving forward
+        if (step > 1) {
+            const currentStepDiv = document.getElementById(`step${step-1}`);
+            const inputs = currentStepDiv.querySelectorAll('input[type="radio"]');
+            let checked = false;
+            inputs.forEach(input => { if(input.checked) checked = true; });
+            if (!checked) {
+                alert("Please select an option before moving forward! ✨");
+                return;
+            }
+
+            // Specific check for "Other" text field validation
+            if (step === 4 && document.getElementById('otherRadio').checked) {
+                const textField = document.getElementById('otherTextField');
+                if (textField.value.trim() === "") {
+                    alert("Please specify your ingredient choice! ✨");
+                    return;
+                }
+            }
+        }
+
+        document.querySelectorAll('.question-block').forEach(block => block.classList.remove('active'));
+        if (step === 1) document.getElementById('step1').classList.add('active');
+        else if (step === 2) document.getElementById('step2').classList.add('active');
+        else if (step === 3) document.getElementById('step3').classList.add('active');
+        else if (step === 4) document.getElementById('step4').classList.add('active');
+    }
+
+    function prevStep(step) {
+        document.querySelectorAll('.question-block').forEach(block => block.classList.remove('active'));
+        if (step === 0) document.getElementById('intro').classList.add('active');
+        else document.getElementById(`step${step}`).classList.add('active');
+    }
+
+    // Handle Form submission smoothly
+    const form = document.getElementById('skinForm');
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        const data = new FormData(form);
+        
+        fetch(form.action, {
+            method: form.method,
+            body: data,
+            headers: { 'Accept': 'application/json' }
+        }).then(response => {
+            if (response.ok) {
+                form.style.display = 'none';
+                document.getElementById('success').style.display = 'block';
+            } else {
+                alert("Oops! Something went wrong. Try again.");
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
